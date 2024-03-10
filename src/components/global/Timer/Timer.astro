@@ -9,15 +9,13 @@ const { timestamp }: Props = Astro.props
 <div
   class='m-4 grid h-52 w-52 place-content-center rounded-full border-2 font-orloj text-5xl uppercase'
 >
-  <span class='mt-4' id='time-display'>
-    <!-- {'00'}: {'00'} -->
-  </span>
-  <span class='mt-1 text-base' id='clock-display'></span>
+  <span class='mt-4' id='time-display'> 00: 00 </span>
+  <span class='mt-1 text-base' id='clock-display'> 00 </span>
 </div>
 <script define:vars={{ timestamp }}>
   // retrieve 'timestamp' from local storage or set one if
   // not exists
-  const time = timestamp || localStorage.getItem('timestamp') || Date.now()
+  const time = localStorage.getItem('timestamp') || timestamp || Date.now()
   // update the timestamp every second
   setInterval(() => {
     const elapsed = Date.now() - time

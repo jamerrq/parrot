@@ -4,7 +4,8 @@ export default {
   theme: {
     fontFamily: {
       iceland: ['Iceland', 'system-ui', 'sans-serif'],
-      orloj: ['Orloj', 'monospace']
+      orloj: ['Orloj', 'monospace'],
+      bungee: ['Bungee', 'system-ui']
     },
     debugScreens: {
       style: {

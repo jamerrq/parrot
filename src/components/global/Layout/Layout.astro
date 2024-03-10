@@ -36,6 +36,7 @@ import { Background } from '@component/global'
 import '@fontsource/source-sans-pro'
 import '@fontsource/bungee-shade'
 import '@fontsource/iceland'
+import '@fontsource/bungee'
 
 const {
   title,
@@ -149,14 +150,14 @@ const {
       href='/favicons/favicon.ico'
     />
     <link rel='icon' type='image/x-icon' href='/favicons/favicon.ico' />
-    <meta name='msapplication-TileColor' content='#2F2F2F' />
+    <meta name='msapplication-TileColor' content='#A5DD9B' />
     <meta
       name='msapplication-TileImage'
       content='/favicons/favicon-144x144.png'
     />
     <meta name='msapplication-config' content='/browserconfig.xml' />
     <link rel='icon' type='image/svg+xml' href='/favicons/favicon.svg' />
-    <meta name='theme-color' content='#2F2F2F' />
+    <meta name='theme-color' content='#A5DD9B' />
 
     <!-- Service worker registration. -->
     {
@@ -195,7 +196,7 @@ const {
   </head>
   <body
     data-dev={import.meta.env.DEV}
-    class='flex min-h-screen w-full flex-col overflow-x-hidden data-[dev]:debug-screens'
+    class='flex flex-col overflow-x-hidden data-[dev]:debug-screens'
   >
     <Background />
     <div>

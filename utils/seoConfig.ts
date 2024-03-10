@@ -5,16 +5,16 @@ import type { ManifestOptions } from 'vite-plugin-pwa'
  * Defines the default SEO configuration for the website.
  */
 export const seoConfig = {
-  baseURL: 'https://lumina-sigma.vercel.app/', // Change this to your production URL.
-  description: 'Lumina: Minimalist Astro PWA Starter Template', // Change this to be your website's description.
+  baseURL: 'https://parrot-mu.vercel.app/', // Change this to your production URL.
+  description: 'Parrot', // Change this to be your website's description.
   type: 'website',
   image: {
-    url: 'https://res.cloudinary.com/dm064xuo5/image/upload/f_auto,q_auto/v1/lumina/xgp7endgqc62fygkprze', // Change this to your website's thumbnail.
-    alt: 'Minimalist Astro PWA Starter Template', // Change this to your website's thumbnail description.
-    width: 1200,
-    height: 630
+    url: 'https://res.cloudinary.com/dm064xuo5/image/upload/f_auto,q_auto/v1/others/cwkzbljmebukwzmbxdng', // Change this to your website's thumbnail.
+    alt: 'Parrot', // Change this to your website's thumbnail description.
+    width: 1366,
+    height: 748
   },
-  siteName: 'Lumina', // Change this to your website's name,
+  siteName: 'Parrot', // Change this to your website's name,
   twitter: {
     card: 'summary_large_image'
   }
@@ -24,12 +24,12 @@ export const seoConfig = {
  * Defines the configuration for PWA webmanifest.
  */
 export const manifest: Partial<ManifestOptions> = {
-  name: 'Laura Ebooks', // Change this to your website's name.
-  short_name: 'Lebooks', // Change this to your website's short name.
-  description: 'A short app from his nigg friend',
-  theme_color: '#2D3250', // Change this to your primary color.
-  background_color: '#2D3250', // Change this to your background color.
-  display: 'minimal-ui',
+  name: 'Parrot', // Change this to your website's name.
+  short_name: 'Parrot', // Change this to your website's short name.
+  description: 'Parrot',
+  theme_color: '#A5DD9B', // Change this to your primary color.
+  background_color: '#A5DD9B', // Change this to your background color.
+  display: 'fullscreen',
   icons: [
     {
       src: '/favicons/favicon-192x192.png',
