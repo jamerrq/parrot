@@ -1,0 +1,16 @@
+---
+interface Props {
+  text?: string
+  id?: string
+}
+
+const { text = '', ...rest }: Props = Astro.props
+---
+
+<button
+  type='button'
+  class='rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 px-2 py-1 text-center text-sm font-bold text-white hover:bg-gradient-to-bl focus:outline-none focus:ring-4 focus:ring-cyan-300 dark:focus:ring-cyan-800'
+  {...rest}
+>
+  {text}
+</button>

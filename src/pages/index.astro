@@ -1,0 +1,23 @@
+---
+// Component imports
+import { Layout, Timer, Button } from '@globals'
+---
+
+<Layout title='Parrot'>
+  <main
+    class='mx-2 flex h-[100dvh] w-[100dvw] flex-col items-center justify-center px-10 py-12 text-center text-lg font-semibold text-pink-100'
+  >
+    <section>
+      <h1 class='m-2 text-6xl text-green-300' id='title'>PARROT</h1>
+    </section>
+    <Timer timestamp={1710086931566} />
+    <Button text='reset' id='reset-time' />
+  </main>
+  <script>
+    // Reset the timer by storing the current timestamp in local storage
+    document.getElementById('reset-time').addEventListener('click', () => {
+      localStorage.setItem('timestamp', Date.now().toString())
+      location.reload()
+    })
+  </script>
+</Layout>

@@ -1,0 +1,37 @@
+---
+interface Props {
+  timestamp: number
+}
+
+const { timestamp }: Props = Astro.props
+---
+
+<div
+  class='m-4 grid h-52 w-52 place-content-center rounded-full border-2 font-orloj text-5xl uppercase'
+>
+  <span class='mt-4' id='time-display'>
+    <!-- {'00'}: {'00'} -->
+  </span>
+  <span class='mt-1 text-base' id='clock-display'></span>
+</div>
+<script define:vars={{ timestamp }}>
+  // retrieve 'timestamp' from local storage or set one if
+  // not exists
+  const time = timestamp || localStorage.getItem('timestamp') || Date.now()
+  // update the timestamp every second
+  setInterval(() => {
+    const elapsed = Date.now() - time
+    const minutes = Math.floor((elapsed / 1000 / 60) % 60)
+      .toString()
+      .padStart(2, '0')
+    const seconds = Math.floor((elapsed / 1000) % 60)
+      .toString()
+      .padStart(2, '0')
+    const hours = Math.floor((elapsed / 1000 / 60 / 60) % 24)
+      .toString()
+      .padStart(2, '0')
+    // update the clock
+    document.getElementById('time-display').innerText = `${minutes}: ${seconds}`
+    document.getElementById('clock-display').innerText = `${hours}`
+  }, 1000)
+</script>
