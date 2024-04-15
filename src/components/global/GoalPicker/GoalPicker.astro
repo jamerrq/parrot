@@ -36,6 +36,13 @@ import { Button } from '@globals'
     if (goalQuantity && goalUnit) {
       goalPicker.value = goalQuantity
       goalPickerTimeFrequency.value = goalUnit
+    } else {
+      // set some default values
+      goalPicker.value = 1000
+      goalPickerTimeFrequency.value = 'hours'
+      // save the default values
+      window.localStorage.setItem('goalQuantity', 1000)
+      window.localStorage.setItem('goalUnit', 'hours')
     }
 
     submitGoalPicker.addEventListener('click', () => {
