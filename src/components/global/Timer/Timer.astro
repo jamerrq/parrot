@@ -7,10 +7,10 @@ const { timestamp }: Props = Astro.props
 ---
 
 <div
-  class='m-4 grid h-52 w-52 place-content-center rounded-full border-2 font-orloj text-5xl uppercase'
+  class='font-orloj m-4 grid h-52 w-52 place-content-center rounded-full border-2 text-5xl uppercase'
 >
   <span class='mt-4' id='time-display'> 00: 00 </span>
-  <span class='mt-1 text-base' id='clock-display'> 00 </span>
+  <span class='mt-1 text-base' id='clock-display'> 00 | 0% </span>
 </div>
 <script define:vars={{ timestamp }}>
   // retrieve 'timestamp' from local storage or set one if
@@ -31,5 +31,30 @@ const { timestamp }: Props = Astro.props
     // update the clock
     document.getElementById('time-display').innerText = `${minutes}: ${seconds}`
     document.getElementById('clock-display').innerText = `${hours}`
+    // get the current goal from local storage or set one if not exists (1000 minutes)
+    const goalQuantity = localStorage.getItem('goalQuantity') || 1000
+    const goalUnity = localStorage.getItem('goalUnit') || 'minutes'
+    console.log(elapsed, goalQuantity, goalUnity)
+    let goalSeconds = 0
+    if (goalUnity === 'minutes') {
+      goalSeconds = goalQuantity * 60
+    } else if (goalUnity === 'hours') {
+      goalSeconds = goalQuantity * 60 * 60
+    } else if (goalUnity === 'days') {
+      goalSeconds = goalQuantity * 60 * 60 * 24
+    } else if (goalUnity === 'weeks') {
+      goalSeconds = goalQuantity * 60 * 60 * 24 * 7
+    } else if (goalUnity === 'months') {
+      goalSeconds = goalQuantity * 60 * 60 * 24 * 30
+    } else if (goalUnity === 'years') {
+      goalSeconds = goalQuantity * 60 * 60 * 24 * 365
+    } else {
+      goalSeconds = goalQuantity
+    }
+    const progress = (elapsed / 1000 / goalSeconds) * 100
+    // update the progress bar
+    document.getElementById('clock-display').innerText =
+      `${hours} h | ${(Math.round(progress * 100) / 100).toFixed(2)}%`
+    // console.log(progress)
   }, 1000)
 </script>

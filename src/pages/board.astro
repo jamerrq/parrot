@@ -1,0 +1,23 @@
+---
+import { Layout } from '@globals'
+
+import { db, Timestamps } from 'astro:db'
+
+const timestamps = await db.select().from(Timestamps)
+
+import { getLastTimestamp } from 'db/querys'
+
+const lastTimestamp = await getLastTimestamp()
+console.log(lastTimestamp)
+---
+
+<Layout title='Board'>
+  <main class='grid h-screen w-screen place-content-center'>
+    <div
+      class='font-orloj m-4 grid h-52 w-52 place-content-center rounded-full border-2 text-5xl uppercase'
+    >
+      <span class='mt-4' id='time-display'> 00: 00 </span>
+      <span class='mt-1 text-base' id='clock-display'> 00 </span>
+    </div>
+  </main>
+</Layout>

@@ -16,7 +16,8 @@
       "@img/*": ["src/assets/img/*"],
       "@svg/*": ["src/assets/svg/*"],
       "@icon/*": ["src/assets/svg/icon/*"],
-      "@data/*": ["src/data/*"]
+      "@data/*": ["src/data/*"],
+      "@dbQuerys": ["db/querys.ts"]
     }
   }
 }

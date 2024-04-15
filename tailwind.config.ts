@@ -3,9 +3,7 @@ export default {
   content: ['./src/**/*.{astro,html,jsx,tsx,svelte,vue,js,ts}'],
   theme: {
     fontFamily: {
-      iceland: ['Iceland', 'system-ui', 'sans-serif'],
-      orloj: ['Orloj', 'monospace'],
-      bungee: ['Bungee', 'system-ui']
+      averia: ['Averia Serif Libre', 'sans-serif']
     },
     debugScreens: {
       style: {

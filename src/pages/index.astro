@@ -1,17 +1,31 @@
 ---
 // Component imports
-import { Layout, Timer, Button } from '@globals'
+import { Layout, Timer, Button, DatePicker, GoalPicker } from '@globals'
 ---
 
 <Layout title='Parrot'>
   <main
-    class='flex h-[100dvh] w-screen flex-col items-center justify-center px-10 py-12 text-center text-lg font-semibold text-pink-100'
+    class='flex h-[100dvh] w-screen flex-col items-center justify-center gap-2 px-10 py-12 text-center text-lg font-semibold text-pink-100'
   >
     <section>
-      <h1 class='m-2 font-bungee text-5xl text-green-400'>PARROT</h1>
+      <h1 class='font-bungee m-2 text-5xl text-green-400'>PARROT</h1>
     </section>
     <Timer timestamp={1710086931566} />
-    <Button text='reset' id='reset-time' />
+    <span>
+      Your last time:
+      <span class='text-green-400' id='last-time'
+        >{new Date(1710086931566).toLocaleString()}</span
+      >
+    </span>
+    <span>
+      Your current goal:
+      <span class='text-green-400' id='goal-span'>1000 hours</span>
+    </span>
+    <Button text='reset to now' id='reset-time' />
+    <div class='flex'>
+      <GoalPicker />
+    </div>
+    <DatePicker />
   </main>
   <script>
     // Reset the timer by storing the current timestamp in local storage
@@ -19,5 +33,16 @@ import { Layout, Timer, Button } from '@globals'
       localStorage.setItem('timestamp', Date.now().toString())
       location.reload()
     })
+    const timestamp = localStorage.getItem('timestamp')
+    if (!timestamp) {
+      localStorage.setItem('timestamp', Date.now().toString())
+    }
+    const lastTime = document.getElementById('last-time')
+    lastTime.textContent = new Date(parseInt(timestamp)).toLocaleString()
+    // Update goal from local storage
+    const goalQuantity = localStorage.getItem('goalQuantity') || 1000
+    const goalUnit = localStorage.getItem('goalUnit') || 'hours'
+    const goalSpan = document.getElementById('goal-span')
+    goalSpan.textContent = `${goalQuantity} ${goalUnit}`
   </script>
 </Layout>

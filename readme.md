@@ -1,24 +1,18 @@
-# LUMINA
+# PARROT
 
-![alt text](./lib/snaps/preview.png)
+![preview](./lib/snaps/preview.webp)
 
-### [Live Demo](https://lumina-sigma.vercel.app/)
+## Description
 
-## Alternate Themes
+Parrot is a simple application to help you keep track of that bad habit you want
+to get rid of. Set a goal, track your progress and save it across sessions.
 
-### Tranquiluxe (UVCanvas, Animated with this [React Library](https://uvcanvas.com/docs/components/tranquiluxe))
+> [!NOTE]
+> Parrot is during development phase, so expect some bugs and missing features.
+> If you find any bug or have a suggestion, please open an issue.
 
-![alt text](./lib/snaps/tranquiluxe.png)
+## TODO
 
-### [Live Demo](https://lumina-git-uvcanvas-jamerrq.vercel.app/)
-
-## About
-
-Template for a PWA with Astro and TailwindCSS. Prettier, EsLint and VsCode
-settings included.
-
----
-
-Generated from
-[`astro-pwa-starter`](https://github.com/shaunchander/astro-pwa-starter), star
-it, not this :)
+- [ ] Option to track multiple habits
+- [ ] Allow the user to save the history for cool graphs
+- [ ] Added cool animations and sounds

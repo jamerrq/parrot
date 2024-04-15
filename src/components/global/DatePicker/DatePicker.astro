@@ -1,0 +1,110 @@
+---
+const hidden = false
+---
+
+<article
+  class='m-2 flex flex-col gap-3 rounded-lg border bg-white/50 p-4 text-emerald-900 [&_input]:text-black'
+>
+  <div class='flex gap-2'>
+    <h1 class='text-2xl font-bold'>Different Last Time?</h1>
+    <button id='show-date-picker'>
+      <svg
+        height='12px'
+        id='Layer_1'
+        style='enable-background:new 0 0 512 512;'
+        version='1.1'
+        viewBox='0 0 512 512'
+        width='12px'
+        xml:space='preserve'
+        xmlns='http://www.w3.org/2000/svg'
+        xmlns:xlink='http://www.w3.org/1999/xlink'
+        ><path
+          d='M256,213.7L256,213.7L256,213.7l174.2,167.2c4.3,4.2,11.4,4.1,15.8-0.2l30.6-29.9c4.4-4.3,4.5-11.3,0.2-15.5L264.1,131.1  c-2.2-2.2-5.2-3.2-8.1-3c-3-0.1-5.9,0.9-8.1,3L35.2,335.3c-4.3,4.2-4.2,11.2,0.2,15.5L66,380.7c4.4,4.3,11.5,4.4,15.8,0.2L256,213.7  z'
+        ></path></svg
+      >
+      <svg
+        height='12px'
+        id='Layer_1'
+        style='enable-background:new 0 0 512 512;'
+        version='1.1'
+        viewBox='0 0 512 512'
+        width='12px'
+        xml:space='preserve'
+        xmlns='http://www.w3.org/2000/svg'
+        xmlns:xlink='http://www.w3.org/1999/xlink'
+        ><path
+          d='M256,298.3L256,298.3L256,298.3l174.2-167.2c4.3-4.2,11.4-4.1,15.8,0.2l30.6,29.9c4.4,4.3,4.5,11.3,0.2,15.5L264.1,380.9  c-2.2,2.2-5.2,3.2-8.1,3c-3,0.1-5.9-0.9-8.1-3L35.2,176.7c-4.3-4.2-4.2-11.2,0.2-15.5L66,131.3c4.4-4.3,11.5-4.4,15.8-0.2L256,298.3  z'
+        ></path></svg
+      >
+    </button>
+  </div>
+  <div
+    class='flex w-full items-center justify-around gap-2'
+    id='date-time-picker'
+  >
+    <div class='flex flex-col gap-2'>
+      <label for='date-picker'>
+        <input
+          id='date-picker'
+          type='date'
+          value={new Date().toISOString().split('T')[0]}
+          max={new Date().toISOString().split('T')[0]}
+        />
+      </label>
+      <label for='time-picker'>
+        <input id='time-picker' type='time' value='00:00' />
+      </label>
+    </div>
+    <aside class='flex flex-col'>
+      <label for='include-history'>
+        <input id='include-history' type='checkbox' />
+        Track history
+      </label>
+      <input
+        type='submit'
+        value='Edit'
+        class='rounded-lg border bg-emerald-500 p-0.5 text-white'
+      />
+    </aside>
+  </div>
+  <script>
+    const date = document.getElementById('date-picker') as HTMLInputElement
+    const time = document.getElementById('time-picker') as HTMLInputElement
+    const history = document.getElementById(
+      'include-history'
+    ) as HTMLInputElement
+    const edit = document.querySelector('input[type="submit"]')
+
+    // if there was a timestamp set, set the input fields to that timestamp
+    const timestamp = localStorage.getItem('timestamp')
+    if (timestamp) {
+      const dateObj = new Date(parseInt(timestamp))
+      date.value = dateObj.toISOString().split('T')[0]
+      time.value = dateObj.toTimeString().split(' ')[0]
+    }
+
+    edit.addEventListener('click', () => {
+      // console.log(date.value, time.value, history.checked)
+      // set new timestamp from input fields
+      const newTimestamp = new Date(`${date.value}T${time.value}`).getTime()
+      // set local storage
+      localStorage.setItem('timestamp', newTimestamp.toString())
+      // reload page
+      location.reload()
+    })
+
+    const showDatePicker = document.getElementById('show-date-picker')
+    const openSvg = showDatePicker.children[0]
+    const closeSvg = showDatePicker.children[1]
+    const dateTimePicker = document.getElementById('date-time-picker')
+    function toggleDatePicker() {
+      const hidden = dateTimePicker.style.display === 'none'
+      if (hidden) {
+        dateTimePicker.style.display = 'flex'
+      } else {
+        dateTimePicker.style.display = 'none'
+      }
+    }
+    showDatePicker.addEventListener('click', toggleDatePicker)
+  </script>
+</article>
